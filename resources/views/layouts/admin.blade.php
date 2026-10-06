@@ -122,6 +122,22 @@
                                 <i class="fa fa-th-large"></i> <span>Nests</span>
                             </a>
                         </li>
+                        <li class="header">BILLING</li>
+                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.billing.settings') ?: 'active' }}">
+                            <a href="{{ route('admin.billing.settings') }}">
+                                <i class="fa fa-cog"></i> <span>Billing Settings</span>
+                            </a>
+                        </li>
+                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.billing.plans') ?: 'active' }}">
+                            <a href="{{ route('admin.billing.plans') }}">
+                                <i class="fa fa-tags"></i> <span>Plans</span>
+                            </a>
+                        </li>
+                        <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.billing.orders') ?: 'active' }}">
+                            <a href="{{ route('admin.billing.orders') }}">
+                                <i class="fa fa-shopping-cart"></i> <span>Orders</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
             </aside>
@@ -159,7 +175,7 @@
                     <strong><i class="fa fa-fw {{ $appIsGit ? 'fa-git-square' : 'fa-code-fork' }}"></i></strong> {{ $appVersion }}<br />
                     <strong><i class="fa fa-fw fa-clock-o"></i></strong> {{ round(microtime(true) - LARAVEL_START, 3) }}s
                 </div>
-                Copyright &copy; 2015 - {{ date('Y') }} <a href="https://pterodactyl.io/">Pterodactyl Software</a>.
+                Copyright &copy; 2015 - {{ date('Y') }} <a href="https://nizardev.me">Nizarctyl Software</a>.
             </footer>
         </div>
         @section('footer-scripts')

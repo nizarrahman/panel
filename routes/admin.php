@@ -8,6 +8,33 @@ Route::get('/', [Admin\BaseController::class, 'index'])->name('admin.index');
 
 /*
 |--------------------------------------------------------------------------
+| Billing / Shop Routes (Admin)
+|--------------------------------------------------------------------------
+|
+| Endpoint: /admin/billing
+|
+*/
+Route::group(['prefix' => 'billing'], function () {
+    // Settings
+    Route::get('/settings', [Admin\Billing\BillingSettingsController::class, 'index'])->name('admin.billing.settings');
+    Route::patch('/settings', [Admin\Billing\BillingSettingsController::class, 'update'])->name('admin.billing.settings.update');
+
+    // Plans
+    Route::get('/plans', [Admin\Billing\BillingPlanController::class, 'index'])->name('admin.billing.plans');
+    Route::get('/plans/create', [Admin\Billing\BillingPlanController::class, 'create'])->name('admin.billing.plans.create');
+    Route::post('/plans', [Admin\Billing\BillingPlanController::class, 'store'])->name('admin.billing.plans.store');
+    Route::get('/plans/{plan}', [Admin\Billing\BillingPlanController::class, 'edit'])->name('admin.billing.plans.edit');
+    Route::patch('/plans/{plan}', [Admin\Billing\BillingPlanController::class, 'update'])->name('admin.billing.plans.update');
+    Route::delete('/plans/{plan}', [Admin\Billing\BillingPlanController::class, 'destroy'])->name('admin.billing.plans.destroy');
+
+    // Orders
+    Route::get('/orders', [Admin\Billing\BillingOrderController::class, 'index'])->name('admin.billing.orders');
+});
+
+
+
+/*
+|--------------------------------------------------------------------------
 | Location Controller Routes
 |--------------------------------------------------------------------------
 |

@@ -38,6 +38,10 @@ class RouteServiceProvider extends ServiceProvider
         $this->routes(function () {
             Route::middleware('web')->group(function () {
                 Route::middleware(['auth.session', RequireTwoFactorAuthentication::class])
+                    ->prefix('/billing')
+                    ->group(base_path('routes/billing.php'));
+
+                Route::middleware(['auth.session', RequireTwoFactorAuthentication::class])
                     ->group(base_path('routes/base.php'));
 
                 Route::middleware(['auth.session', RequireTwoFactorAuthentication::class, AdminAuthenticate::class])
@@ -45,6 +49,11 @@ class RouteServiceProvider extends ServiceProvider
                     ->group(base_path('routes/admin.php'));
 
                 Route::middleware('guest')->prefix('/auth')->group(base_path('routes/auth.php'));
+
+                // Midtrans webhook — no auth, no CSRF (verified by Midtrans signature)
+                Route::withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class])
+                    ->prefix('/billing')
+                    ->group(base_path('routes/billing-webhook.php'));
             });
 
             Route::middleware(['api', RequireTwoFactorAuthentication::class])->group(function () {
