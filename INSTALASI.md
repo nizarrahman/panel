@@ -12,7 +12,7 @@
 Jalankan satu perintah ini di VPS kamu:
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/USERNAME/nizarctyl/main/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/nizarrahman/panel/main/install.sh)
 ```
 
 
