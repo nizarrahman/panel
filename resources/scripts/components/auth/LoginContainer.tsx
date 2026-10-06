@@ -106,6 +106,13 @@ const LoginContainer = ({ history }: RouteComponentProps) => {
                         >
                             Forgot password?
                         </Link>
+                        <span css={tw`text-neutral-600 mx-2`}>|</span>
+                        <Link
+                            to={'/auth/register'}
+                            css={tw`text-xs text-neutral-500 tracking-wide no-underline uppercase hover:text-neutral-600`}
+                        >
+                            Create Account
+                        </Link>
                     </div>
                 </LoginFormContainer>
             )}

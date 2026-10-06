@@ -19,6 +19,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Registration
+    |--------------------------------------------------------------------------
+    |
+    | Control whether public user registration is allowed. Set
+    | ALLOW_REGISTRATION=true in your .env file to enable.
+    |
+    */
+
+    'allow_registration' => env('ALLOW_REGISTRATION', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Authentication Defaults
     |--------------------------------------------------------------------------
     |
